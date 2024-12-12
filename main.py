@@ -56,6 +56,9 @@ for i in range(120):
             begin = classBeginTime[11:16] 
             end = classEndTime[11:16]
             if r.ok:
+                data = json.loads(r.text)
+                if data['STATUS'] == '1' :
+                    print(f"疑似这节课没开扫码签到:{date}\t{item['courseName']}\t{begin}-{end}")
                 print(f"已打卡：{date}\t{item['courseName']}\t{begin}-{end}")
             else:
                 print(f"不知道发生什么了但是打卡失败了喵：{date}\t{item['courseName']}\t{begin}-{end}")
